@@ -1,0 +1,97 @@
+tml {
+    scroll-snap-type: y mandatory;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .container {
+    padding: 30px;
+    /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; */
+  }
+
+  .posts {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+
+  }
+  
+  /* .App {
+    background-color: red
+  } */
+  
+  /* .App {
+    text-align: center;
+    height: 100vh;
+    background-color: black;
+    display: grid;
+    place-items: center;
+  }
+  
+  .app__videos {
+    position: relative;
+    height: 800px;
+    width: 90%;
+    border-radius: 20px;
+    max-width: 1000px;
+    overflow: scroll;
+    scroll-snap-type: y mandatory;
+  }
+  
+  .app__videos__mobile {
+    position: relative;
+    height: 300px;
+    width: 90%;
+    border-radius: 20px;
+    max-width: 1000px;
+    overflow: scroll;
+    scroll-snap-type: y mandatory; 
+  } */
+  
+  /* Hide scrollbar for chrome, safari and opera */
+  /* .app__videos::-webkit-scrollbar {
+    display: none;
+  } */
+  
+  /* HIde scrollbar for IE, edge and firebox */
+  /* .app__videos {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  } */
+  
+  /* @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  } */
+  
+  /* .App-header {
+    background-color: white;
+    width: 100%; */
+    /* width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: calc(3px + 2vmin);
+    color: white; */
+  /* } */
+  
+  /* .header__logo {
+    width:100px;
+  }
+  
+  .App-link {
+    color: #61dafb;
+  }
+  
+  .video {
+    height: 100vh;
+  } */

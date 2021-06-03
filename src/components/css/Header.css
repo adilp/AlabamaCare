@@ -1,0 +1,40 @@
+.header {
+    font-size: small;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.5em 0 2.5em;
+    position: sticky;
+    top: 0;
+    z-index: 100; /* this is optional and should be different for every project */
+    box-shadow: -1px 0px 5px 5px #ffffff;
+    background-color: whitesmoke;
+}
+
+.header__right {
+    padding-right: 10px;
+}
+
+.header__right ul{
+    display: flex;
+    align-items: center;
+}
+
+.header__right li {
+    padding: 10px;
+}
+
+.header__left {
+    display: flex;
+    align-items: center;
+    padding-left: 100px;
+}
+
+.header__left h1 {
+    color: lightblue;
+}
+
+.header__link
+{
+    text-decoration: none;
+}
