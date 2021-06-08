@@ -1,0 +1,15 @@
+.post__info {
+    padding-top: 10px;
+    font-size: smaller;
+    color: #898ea2;
+}
+
+.post__info a {
+    text-decoration: none;
+    color: goldenrod;
+    padding-left: 2px;
+}
+
+p.post__info {
+    margin-top: 4px;
+}

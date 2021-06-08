@@ -11,19 +11,6 @@
     font-weight: bold;
 }
 
-.postinfo__hashTags{
-    color:goldenrod;
-}
-
-.postinfo__user{
-    font-size: smaller;
-    color: #898ea2;
-}
-
-.postinfo__user a{
-    color: goldenrod;
-}
-
 .video {
     position: relative;
     background-color: white;

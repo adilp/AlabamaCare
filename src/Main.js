@@ -15,6 +15,9 @@ function Main() {
   return (
     <div className="container">
       <Header />
+      <div className="filter">
+        {type && feed ? `Filter by ${type}: ${feed}` : null}
+      </div>
       <Posts className="posts" videoFeed="home" filter={feed} type={type} />
     </div>
   );

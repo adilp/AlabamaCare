@@ -1,46 +1,52 @@
 import React, { useState, useEffect } from "react";
+import sanityClient from "../utils/client";
 import PostItem from "./PostItem";
 import "./css/Posts.css";
-import sanityClient from "../client";
 
-export default function Posts(props) {
-  const [videoData, setvideo] = useState(null);
-  let querry = '_type == "comment"';
-  console.log(props);
-
+const _filter = (props) => {
   if (props.videoFeed !== "home") {
-    querry = `_type == "comment" && video == "${props.videoFeed}"`;
-    console.log(querry);
+    return `_type == "comment" && video == "${props.videoFeed}"`;
+    //console.log(querry);
   }
   if (props.filter && props.type === "hashtag") {
-    querry = `_type == "comment" && hashtag == "${props.filter}"`;
-    console.log(querry);
+    console.log("filter by hashtag");
+    return `_type == "comment" && hashtag == "${props.filter}"`;
   }
 
   if (props.filter && props.type === "user") {
-    querry = `_type == "comment" && commentAuthor == "${props.filter}"`;
-    console.log(querry);
+    console.log("FILTER BY USER");
+    return `_type == "comment" && commentAuthor == "${props.filter}"`;
   }
+
+  return '_type == "comment"';
+};
+
+const _randomOrder = (list) => list.sort(() => Math.random() - 0.5);
+
+const Posts = (props) => {
+  const [videoData, setvideo] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  let querry = _filter(props);
 
   useEffect(() => {
     sanityClient
       .fetch(`*[${querry}]`)
-      .then((data) => setvideo(data))
+      .then((data) => {
+        setvideo(data);
+        setIsLoading(false);
+      })
       .catch(console.error);
   }, [querry]);
 
-  let postDiv = <div></div>;
+  return (
+    <div className="posts">
+      {isLoading
+        ? "...loading"
+        : _randomOrder(videoData).map((post) => (
+            <PostItem key={post._id} post={post} />
+          ))}
+    </div>
+  );
+};
 
-  if (PostItem && videoData) {
-    postDiv = (
-      <div className="posts">
-        {videoData.map((post) => (
-          <PostItem post={post} />
-        ))}
-      </div>
-    );
-  }
-
-  console.log(videoData);
-  return <div className="posts">{postDiv}</div>;
-}
+export default Posts;

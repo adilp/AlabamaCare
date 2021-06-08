@@ -1,61 +1,47 @@
 import React, { useState, useEffect } from "react";
 import "./css/PostItem.css";
 import { Link, useParams } from "react-router-dom";
+import utils from "../utils/utils";
+import HashtagComponent from "./common/HashtagComponent";
+import SubmittedByComponent from "./common/SubmittedByComponent";
 
-export default function PostItem(props) {
-  const { text, upvote, image, commentAuthor, timeStamp, hashtag, url, _id } =
-    props.post;
+const PostItem = (props) => {
+  const { hashtag, text, upvote, image, commentAuthor, _id } = props.post;
 
-  console.log(props);
+  // let { title } = useParams();
 
-  let { title } = useParams();
+  // console.log(title);
 
-  console.log(title);
+  const { hashTag, title, timeStamp } = utils.cleanText(text);
+
+  console.log(hashTag, title, timeStamp);
 
   return (
     <div className="post">
       <div className="post__left">
-        <span className="post__title">
-          {text}{" "}
-          {/*
-            <span className="post__timeStamp">{timeStamp}</span>
-          <Link
-            to={{
-              pathname: `/filter/hashtag/${hashtag}`,
-              info: { props },
-            }}
-          >
-            <span className="post__hashTag">#{hashtag}</span>
-          </Link>
-          */}
-        </span>
-
-        <span className="post__info">
-          submitted by
-          <Link
-            to={{
-              pathname: `/filter/user/${commentAuthor}`,
-              info: { props },
-            }}
-          >
-            {commentAuthor}
-          </Link>
-        </span>
+        <span className="post__timeStamp">{timeStamp}</span>
+        <span className="post__title"> {title} </span>
+        <HashtagComponent hashTag={hashTag} hashTagURL={hashtag} info={props} />
+        <SubmittedByComponent commentAuthor={commentAuthor} info={props} />
       </div>
       <div className="post__center">
-        <Link
-          //need to pass in ID then pull that info in detail
-          to={{
-            pathname: `/video/${_id}`,
-            info: { props },
-          }}
-        >
-          {" "}
-          <img src={image} />
-        </Link>
-
+        <div className="center__container">
+          <Link
+            //need to pass in ID then pull that info in detail
+            to={{
+              pathname: `/video/${_id}`,
+              info: { props },
+            }}
+          >
+            {" "}
+            <span className="post__hover">Watch</span>
+            <img src={image} />
+          </Link>
+        </div>
         <span className="post__upVote">{upvote}</span>
       </div>
     </div>
   );
-}
+};
+
+export default PostItem;

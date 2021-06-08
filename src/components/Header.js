@@ -15,6 +15,7 @@ export default function Header() {
           <h1>Alabama Care</h1>
         </Link>
       </div>
+      {/*
       <div className="header__right">
         <ul>
           <li>
@@ -28,6 +29,7 @@ export default function Header() {
           </li>
         </ul>
       </div>
+      */}
     </div>
   );
 }
