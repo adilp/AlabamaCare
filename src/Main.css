@@ -6,25 +6,29 @@
   
   .container {
     padding: 30px;
+    position: absolute;
     /* display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center; */
+    left: 50%;
+    transform: translate(-50%);
+    text-align: center;
   }
 
   .posts {
-    position: absolute;
+    /* position: absolute; */
     /* top: 15%; */
-    left: 50%;
-    transform: translate(-50%);
+    /* left: 50%;
+    transform: translate(-50%); */
 
   }
 
   .filter {
-    position: absolute;
-    top: 10%;
+    display: inline-block;
+    /* top: 10%;
     left: 50%;
-    transform: translate(-50%, -10%);
+    transform: translate(-50%, -10%); */
     font-weight: bold;
     font-size: large;
   }

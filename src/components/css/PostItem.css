@@ -3,10 +3,16 @@
     align-items: center;
     margin: 1.5em 1em;
     box-shadow: -1px 0px 5px 5px #f4f5fa;
+    transition: all .2s;
+}
+
+.post:hover {
+    transform: translate(-3px);
+    box-shadow: 0 5px 10px rgb(0, 0, 0, 0.2);
 }
 
 .post:hover .post__hover{
-    opacity: 0.9;;
+    opacity: 0.9;
 }
 
 .post:hover .post__center {
