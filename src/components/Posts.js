@@ -4,18 +4,19 @@ import PostItem from "./PostItem";
 import "./css/Posts.css";
 
 const _filter = (props) => {
-  if (props.videoFeed !== "home") {
-    return `_type == "comment" && video == "${props.videoFeed}"`;
+  const { videoFeed, filter, type } = props;
+  if (videoFeed !== "home") {
+    return `_type == "comment" && video == "${videoFeed}"`;
     //console.log(querry);
   }
-  if (props.filter && props.type === "hashtag") {
+  if (filter && type === "hashtag") {
     console.log("filter by hashtag");
-    return `_type == "comment" && hashtag == "${props.filter}"`;
+    return `_type == "comment" && hashtag == "${filter}"`;
   }
 
-  if (props.filter && props.type === "user") {
+  if (filter && type === "user") {
     console.log("FILTER BY USER");
-    return `_type == "comment" && commentAuthor == "${props.filter}"`;
+    return `_type == "comment" && commentAuthor == "${filter}"`;
   }
 
   return '_type == "comment"';
@@ -43,7 +44,7 @@ const Posts = (props) => {
       {isLoading
         ? "...loading"
         : _randomOrder(videoData).map((post) => (
-            <PostItem key={post._id} post={post} />
+            <PostItem key={post._id} {...post} />
           ))}
     </div>
   );

@@ -1,6 +1,7 @@
 import sanityClient from "@sanity/client";
+require("dotenv").config();
 
 export default sanityClient({
-  projectId: "aw80b2ut",
-  dataset: "production",
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  dataset: process.env.REACT_APP_DATASET,
 });

@@ -3,11 +3,24 @@ export default {
   name: "comment",
   title: "Comment",
   type: "document",
+  initialValue: {
+    upvotes: 0,
+  },
   fields: [
     {
       name: "video",
       title: "Video Id",
       type: "string",
+    },
+    {
+      name: "likes",
+      title: "Likes",
+      type: "number",
+    },
+    {
+      name: "upvote",
+      title: "Upvotes",
+      type: "number",
     },
     {
       name: "commentAuthor",

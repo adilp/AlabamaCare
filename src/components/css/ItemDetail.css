@@ -38,6 +38,12 @@
     padding: 30px;
 }
 
+.itemDetail__related {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+}
+
 .itemDetail__related > span{
     position: relative;
     left: 50%;

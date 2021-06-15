@@ -5,16 +5,90 @@ import utils from "../utils/utils";
 import HashtagComponent from "./common/HashtagComponent";
 import SubmittedByComponent from "./common/SubmittedByComponent";
 
+const Votes = (props) => {
+  console.log(props);
+  const { upvote, _id } = props;
+  const [votes, setVotes] = useState(upvote);
+
+  // useEffect(() => {
+  //   const mutations = [
+  //     {
+  //       patch: {
+  //         id: _id,
+  //         inc: {
+  //           upvote: 1,
+  //         },
+  //       },
+  //     },
+  //   ];
+  //   console.log(
+  //     process.env.REACT_APP_PROJECT_ID,
+  //     process.env.REACT_APP_DATASET,
+  //     process.env.REACT_APP_TOKEN
+  //   );
+  //   console.log("upvote");
+  //   // fetch(
+  //   //   `https://${process.env.REACT_APP_PROJECT_ID}.api.sanity.io/v1/data/mutate/${process.env.REACT_APP_DATASET}`,
+  //   //   {
+  //   //     method: "post",
+  //   //     headers: {
+  //   //       "Content-type": "application/json",
+  //   //       Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+  //   //     },
+  //   //     body: JSON.stringify({ mutations }),
+  //   //   }
+  //   // )
+  //   //   .then((response) => response.json())
+  //   //   .then((result) => console.log(result))
+  //   //   .catch((error) => console.error(error));
+  // }, [upvote]);
+
+  // useEffect(() => {
+  //   setVotes(upvote);
+  // }, [votes]);
+
+  const _onClick = () => {
+    const mutations = [
+      {
+        patch: {
+          id: _id,
+          inc: {
+            upvote: 1,
+          },
+        },
+      },
+    ];
+    console.log("upvote");
+    fetch(
+      `https://${process.env.REACT_APP_PROJECT_ID}.api.sanity.io/v1/data/mutate/${process.env.REACT_APP_DATASET}`,
+      {
+        method: "post",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+        },
+        body: JSON.stringify({ mutations }),
+      }
+    )
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.error(error));
+    setVotes((prevCount) => prevCount + 1);
+  };
+
+  return (
+    <div className="QuestionPage__votes-count">
+      <button onClick={_onClick}>↑</button>
+      {votes}
+    </div>
+  );
+};
+
 const PostItem = (props) => {
-  const { hashtag, text, upvote, image, commentAuthor, _id } = props.post;
-
-  // let { title } = useParams();
-
-  // console.log(title);
+  console.log(props);
+  const { hashtag, text, upvote, image, commentAuthor, _id } = props;
 
   const { hashTag, title, timeStamp } = utils.cleanText(text);
-
-  console.log(hashTag, title, timeStamp);
 
   return (
     <div className="post">
@@ -38,7 +112,8 @@ const PostItem = (props) => {
             <img src={image} />
           </Link>
         </div>
-        <span className="post__upVote">{upvote}</span>
+        <Votes {...props} />
+        {/*<span className="post__upVote">65</span>*/}
       </div>
     </div>
   );
