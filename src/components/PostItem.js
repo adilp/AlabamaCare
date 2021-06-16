@@ -6,46 +6,8 @@ import HashtagComponent from "./common/HashtagComponent";
 import SubmittedByComponent from "./common/SubmittedByComponent";
 
 const Votes = (props) => {
-  console.log(props);
   const { upvote, _id } = props;
   const [votes, setVotes] = useState(upvote);
-
-  // useEffect(() => {
-  //   const mutations = [
-  //     {
-  //       patch: {
-  //         id: _id,
-  //         inc: {
-  //           upvote: 1,
-  //         },
-  //       },
-  //     },
-  //   ];
-  //   console.log(
-  //     process.env.REACT_APP_PROJECT_ID,
-  //     process.env.REACT_APP_DATASET,
-  //     process.env.REACT_APP_TOKEN
-  //   );
-  //   console.log("upvote");
-  //   // fetch(
-  //   //   `https://${process.env.REACT_APP_PROJECT_ID}.api.sanity.io/v1/data/mutate/${process.env.REACT_APP_DATASET}`,
-  //   //   {
-  //   //     method: "post",
-  //   //     headers: {
-  //   //       "Content-type": "application/json",
-  //   //       Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
-  //   //     },
-  //   //     body: JSON.stringify({ mutations }),
-  //   //   }
-  //   // )
-  //   //   .then((response) => response.json())
-  //   //   .then((result) => console.log(result))
-  //   //   .catch((error) => console.error(error));
-  // }, [upvote]);
-
-  // useEffect(() => {
-  //   setVotes(upvote);
-  // }, [votes]);
 
   const _onClick = () => {
     const mutations = [
@@ -58,7 +20,6 @@ const Votes = (props) => {
         },
       },
     ];
-    console.log("upvote");
     fetch(
       `https://${process.env.REACT_APP_PROJECT_ID}.api.sanity.io/v1/data/mutate/${process.env.REACT_APP_DATASET}`,
       {
@@ -77,7 +38,7 @@ const Votes = (props) => {
   };
 
   return (
-    <div className="QuestionPage__votes-count">
+    <div className="post__upVote">
       <button onClick={_onClick}>↑</button>
       {votes}
     </div>
@@ -86,7 +47,7 @@ const Votes = (props) => {
 
 const PostItem = (props) => {
   console.log(props);
-  const { hashtag, text, upvote, image, commentAuthor, _id } = props;
+  const { hashtag, text, image, commentAuthor, _id } = props;
 
   const { hashTag, title, timeStamp } = utils.cleanText(text);
 
@@ -113,7 +74,6 @@ const PostItem = (props) => {
           </Link>
         </div>
         <Votes {...props} />
-        {/*<span className="post__upVote">65</span>*/}
       </div>
     </div>
   );
