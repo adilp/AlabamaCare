@@ -57,6 +57,7 @@ const PostItem = (props) => {
 
   return (
     <div className="post">
+      <Votes info={props.comment} />
       <div className="post__center">
         <div className="center__container">
           <NavLink
@@ -71,7 +72,6 @@ const PostItem = (props) => {
             <img src={image} />
           </NavLink>
         </div>
-        <Votes info={props.comment} />
       </div>
       <div className="post__left">
         <NavLink
