@@ -9,13 +9,14 @@ import { useParams, useLocation } from "react-router-dom";
 import utils from "../utils/utils";
 import HashtagComponent from "./common/HashtagComponent";
 import SubmittedByComponent from "./common/SubmittedByComponent";
-import URL from "../utils/constants";
+import Votes from "./common/Votes";
+import constants from "../utils/constants";
 
 const ItemDetail = (props = null) => {
+  const { URL } = constants;
   let { title } = useParams();
   const location = useLocation();
   const path = `${URL}${location.pathname}`;
-  console.log(location.pathname);
   let querry = `_type == "comment" && _id == "${title}"`;
   let data;
   const [videoData, setvideo] = useState(null);
@@ -40,8 +41,7 @@ const ItemDetail = (props = null) => {
   }, [querry]);
 
   if (videoData) {
-    let { text, commentAuthor, url, upvote, video, hashtag } = videoData[0];
-    //console.log(videoData[0]);
+    let { text, commentAuthor, url, video, hashtag } = videoData[0];
     const { hashTag, title } = utils.cleanText(text);
 
     data = (
@@ -67,12 +67,12 @@ const ItemDetail = (props = null) => {
               url={url}
             />
           </div>
-          <span className="postinfo__upvote">{upvote}</span>
+          <Votes classStyle="itemDetail__upVote" info={videoData[0]} />
 
           <CopyToClipboard text={path} onCopy={onCopyText}>
             <div className="copy-area">
-              <button>Copy to Clipboard</button>
-              {isCopied ? "Copied" : ""}
+              <button>Copy Link</button>
+              {isCopied ? "Link Copied" : ""}
             </div>
           </CopyToClipboard>
         </div>

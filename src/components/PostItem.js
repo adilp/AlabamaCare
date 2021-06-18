@@ -5,49 +5,50 @@ import { NavLink } from "react-router-dom";
 import utils from "../utils/utils";
 import HashtagComponent from "./common/HashtagComponent";
 import SubmittedByComponent from "./common/SubmittedByComponent";
+import Votes from "./common/Votes";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Votes = (props) => {
-  const { upvote, _id } = props.info;
-  const [votes, setVotes] = useState(upvote);
+// const Votes = (props) => {
+//   const { upvote, _id } = props.info;
+//   const [votes, setVotes] = useState(upvote);
 
-  const _onClick = () => {
-    const mutations = [
-      {
-        patch: {
-          id: _id,
-          inc: {
-            upvote: 1,
-          },
-        },
-      },
-    ];
-    fetch(
-      `https://${process.env.REACT_APP_PROJECT_ID}.api.sanity.io/v1/data/mutate/${process.env.REACT_APP_DATASET}`,
-      {
-        method: "post",
-        headers: {
-          "Content-type": "application/json",
-          Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
-        },
-        body: JSON.stringify({ mutations }),
-      }
-    )
-      .then((response) => response.json())
-      .then((result) => console.log(result))
-      .catch((error) => console.error(error));
-    setVotes((prevCount) => prevCount + 1);
-  };
+//   const _onClick = () => {
+//     const mutations = [
+//       {
+//         patch: {
+//           id: _id,
+//           inc: {
+//             upvote: 1,
+//           },
+//         },
+//       },
+//     ];
+//     fetch(
+//       `https://${process.env.REACT_APP_PROJECT_ID}.api.sanity.io/v1/data/mutate/${process.env.REACT_APP_DATASET}`,
+//       {
+//         method: "post",
+//         headers: {
+//           "Content-type": "application/json",
+//           Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+//         },
+//         body: JSON.stringify({ mutations }),
+//       }
+//     )
+//       .then((response) => response.json())
+//       .then((result) => console.log(result))
+//       .catch((error) => console.error(error));
+//     setVotes((prevCount) => prevCount + 1);
+//   };
 
-  return (
-    <div className="post__upVote" onClick={_onClick}>
-      {votes}
-      <FontAwesomeIcon className="upVote__heart" icon={faHeart} />
-    </div>
-  );
-};
+//   return (
+//     <div className="post__upVote" onClick={_onClick}>
+//       {votes}
+//       <FontAwesomeIcon className="upVote__heart" icon={faHeart} />
+//     </div>
+//   );
+// };
 
 const PostItem = (props) => {
   const { hashtag, text, image, commentAuthor, _id } = props.comment;

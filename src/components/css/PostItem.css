@@ -112,7 +112,7 @@ img {
     padding: 1em;
 }
 
-.post__upVote {
+/* .post__upVote {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -136,7 +136,7 @@ img {
     box-shadow: 0 6px 14px 0 #666;
     transform: scale(1.05);
     
- }
+ } */
 
 .post__center > img {
     border-radius: 5px;
@@ -154,7 +154,7 @@ img {
     padding: 5px 0;
 }
 
-@media only screen and (max-width: 1024px) {
+/* @media only screen and (max-width: 1024px) {
 
     .post__upVote {
         top: unset;
@@ -162,4 +162,4 @@ img {
         bottom: 0;
     }
 
-}
+} */
