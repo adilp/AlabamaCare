@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import env from "react-dotenv";
 import "./css/PostItem.css";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import utils from "../utils/utils";
 import HashtagComponent from "./common/HashtagComponent";
 import SubmittedByComponent from "./common/SubmittedByComponent";
@@ -54,7 +54,7 @@ const PostItem = (props) => {
   console.log(props);
   const { hashtag, text, image, commentAuthor, _id } = props.comment;
 
-  const { hashTag, title, timeStamp } = utils.cleanText(text);
+  const { hashTag, title } = utils.cleanText(text);
 
   return (
     <div className="post">

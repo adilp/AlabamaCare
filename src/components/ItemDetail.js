@@ -42,7 +42,7 @@ const ItemDetail = (props = null) => {
   if (videoData) {
     let { text, commentAuthor, url, upvote, video, hashtag } = videoData[0];
     //console.log(videoData[0]);
-    const { hashTag, timeStamp, title } = utils.cleanText(text);
+    const { hashTag, title } = utils.cleanText(text);
 
     data = (
       <div>
