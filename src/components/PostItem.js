@@ -10,7 +10,6 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Votes = (props) => {
-  console.log(props.info);
   const { upvote, _id } = props.info;
   const [votes, setVotes] = useState(upvote);
 
@@ -26,12 +25,12 @@ const Votes = (props) => {
       },
     ];
     fetch(
-      `https://${env.REACT_APP_PROJECT_ID}.api.sanity.io/v1/data/mutate/${env.REACT_APP_DATASET}`,
+      `https://${process.env.REACT_APP_PROJECT_ID}.api.sanity.io/v1/data/mutate/${process.env.REACT_APP_DATASET}`,
       {
         method: "post",
         headers: {
           "Content-type": "application/json",
-          Authorization: `Bearer ${env.REACT_APP_TOKEN}`,
+          Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
         },
         body: JSON.stringify({ mutations }),
       }
@@ -51,7 +50,6 @@ const Votes = (props) => {
 };
 
 const PostItem = (props) => {
-  console.log(props);
   const { hashtag, text, image, commentAuthor, _id } = props.comment;
 
   const { hashTag, title } = utils.cleanText(text);
