@@ -1,7 +1,7 @@
 import sanityClient from "@sanity/client";
-require("dotenv").config();
+import env from "react-dotenv";
 
 export default sanityClient({
-  projectId: process.env.REACT_APP_PROJECT_ID,
-  dataset: process.env.REACT_APP_DATASET,
+  projectId: env.REACT_APP_PROJECT_ID,
+  dataset: env.REACT_APP_DATASET,
 });

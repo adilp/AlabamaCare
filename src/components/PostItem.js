@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import env from "react-dotenv";
 import "./css/PostItem.css";
 import { NavLink, useParams } from "react-router-dom";
 import utils from "../utils/utils";
@@ -25,12 +26,12 @@ const Votes = (props) => {
       },
     ];
     fetch(
-      `https://${process.env.REACT_APP_PROJECT_ID}.api.sanity.io/v1/data/mutate/${process.env.REACT_APP_DATASET}`,
+      `https://${env.REACT_APP_PROJECT_ID}.api.sanity.io/v1/data/mutate/${env.REACT_APP_DATASET}`,
       {
         method: "post",
         headers: {
           "Content-type": "application/json",
-          Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+          Authorization: `Bearer ${env.REACT_APP_TOKEN}`,
         },
         body: JSON.stringify({ mutations }),
       }

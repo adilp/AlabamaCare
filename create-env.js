@@ -1,0 +1,8 @@
+const fs = require("fs");
+const path = `./.env`;
+const vars = `
+ REACT_APP_PROJECT_ID=${process.env.ENV_VAR_1_NETLIFY}\n
+ REACT_APP_DATASET=${process.env.ENV_VAR_2_NETLIFY}\n
+ REACT_APP_TOKEN=${process.ENV_VAR_3_NETLIFY}
+`;
+fs.writeFileSync(path, vars);
