@@ -9,6 +9,7 @@ function App() {
     <Router>
       <Switch>
         <Route path="/" exact component={Main} />
+        <Route path="/filter/:type" exact component={Main} />
         <Route path="/filter/:type/:feed" exact component={Main} />
         <Route path="/video/:title" component={ItemDetail} />
       </Switch>

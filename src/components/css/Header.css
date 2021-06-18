@@ -1,14 +1,16 @@
 .header {
     font-size: small;
+    font-family: 'Poppins', sans-serif;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 70px;
     margin: 0.5em 0 2.5em;
     position: sticky;
     top: 0;
     z-index: 100; /* this is optional and should be different for every project */
-    box-shadow: -1px 0px 5px 5px #ffffff;
-    background-color: whitesmoke;
+    /* box-shadow: -1px 0px 5px 5px #ffffff; */
+    background-color: white;
 }
 
 .header__right {
@@ -18,10 +20,20 @@
 .header__right ul{
     display: flex;
     align-items: center;
+    list-style-type: none;
 }
 
 .header__right li {
     padding: 10px;
+}
+
+.header__right a{
+    margin: 15px;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: black;
 }
 
 .header__left {
@@ -31,7 +43,7 @@
 }
 
 .header__left h1 {
-    color: lightblue;
+    color: #335DAD;
 }
 
 .header__link

@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "./css/PostItem.css";
-import { Link, useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import utils from "../utils/utils";
 import HashtagComponent from "./common/HashtagComponent";
 import SubmittedByComponent from "./common/SubmittedByComponent";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Votes = (props) => {
-  const { upvote, _id } = props;
+  console.log(props.info);
+  const { upvote, _id } = props.info;
   const [votes, setVotes] = useState(upvote);
 
   const _onClick = () => {
@@ -38,30 +42,24 @@ const Votes = (props) => {
   };
 
   return (
-    <div className="post__upVote">
-      <button onClick={_onClick}>↑</button>
+    <div className="post__upVote" onClick={_onClick}>
       {votes}
+      <FontAwesomeIcon className="upVote__heart" icon={faHeart} />
     </div>
   );
 };
 
 const PostItem = (props) => {
   console.log(props);
-  const { hashtag, text, image, commentAuthor, _id } = props;
+  const { hashtag, text, image, commentAuthor, _id } = props.comment;
 
   const { hashTag, title, timeStamp } = utils.cleanText(text);
 
   return (
     <div className="post">
-      <div className="post__left">
-        <span className="post__timeStamp">{timeStamp}</span>
-        <span className="post__title"> {title} </span>
-        <HashtagComponent hashTag={hashTag} hashTagURL={hashtag} info={props} />
-        <SubmittedByComponent commentAuthor={commentAuthor} info={props} />
-      </div>
       <div className="post__center">
         <div className="center__container">
-          <Link
+          <NavLink
             //need to pass in ID then pull that info in detail
             to={{
               pathname: `/video/${_id}`,
@@ -71,9 +69,33 @@ const PostItem = (props) => {
             {" "}
             <span className="post__hover">Watch</span>
             <img src={image} />
-          </Link>
+          </NavLink>
         </div>
-        <Votes {...props} />
+        <Votes info={props.comment} />
+      </div>
+      <div className="post__left">
+        <NavLink
+          className="post__title"
+          //need to pass in ID then pull that info in detail
+          to={{
+            pathname: `/video/${_id}`,
+            info: { props },
+          }}
+        >
+          <a> {title} </a>
+        </NavLink>
+        <div className="left__timeHash">
+          {/*} <span className="post__timeStamp">{timeStamp}</span> */}
+          <HashtagComponent
+            hashTag={hashTag}
+            hashTagURL={hashtag}
+            info={props.comment}
+          />
+        </div>
+        <SubmittedByComponent
+          commentAuthor={commentAuthor}
+          info={props.comment}
+        />
       </div>
     </div>
   );

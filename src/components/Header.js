@@ -15,21 +15,21 @@ export default function Header() {
           <h1>Alabama Care</h1>
         </Link>
       </div>
-      {/*
+
       <div className="header__right">
         <ul>
           <li>
-            <a>Popular</a>
-          </li>
-          <li>
-            <a>Popular</a>
-          </li>
-          <li>
-            <a>Popular</a>
+            <Link
+              className="header__link"
+              to={{
+                pathname: `/filter/most_liked`,
+              }}
+            >
+              <a>Most Liked</a>
+            </Link>
           </li>
         </ul>
       </div>
-      */}
     </div>
   );
 }
