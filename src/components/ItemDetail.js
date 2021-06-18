@@ -48,7 +48,7 @@ const ItemDetail = (props = null) => {
       <div>
         <div className="itemDetail__container">
           <div className="itemDetail__postinfo">
-            <span className="postinfo__timestamp">{timeStamp} </span>
+            {/* <span className="postinfo__timestamp">{timeStamp} </span> */}
             <span className="postinfo__title">{title} </span>
             <HashtagComponent
               hashTag={hashTag}

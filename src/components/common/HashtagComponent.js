@@ -11,7 +11,7 @@ const HashtagComponent = (props) => {
           info: props.info,
         }}
       >
-        <a>{props.hashTag}</a>
+        {props.hashTag ? <a>{props.hashTag}</a> : ""}
       </Link>
     </div>
   );

@@ -1,5 +1,11 @@
 .post__hashTag a {
-    color:goldenrod;
+    color:#a17b1b;
     white-space: pre;
     text-decoration: none;
+    background-color: #f8de87;
+    padding: 3px
+}
+
+.post__hashTag a:empty {
+    display: none;
 }
