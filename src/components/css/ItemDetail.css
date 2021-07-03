@@ -28,14 +28,15 @@
 .app__videos {
     position: relative;
     padding-top: 10px;
-    height: 800px;
+    padding-bottom: 50px;
+    height: 500px;
     width: 90%;
     border-radius: 20px;
     max-width: 1000px;
 }
 
 .copy-area {
-    padding: 30px;
+    padding: 10px;
 }
 
 .itemDetail__related {
@@ -69,5 +70,26 @@
     justify-content: center;
     text-align: left;
     white-space: pre-line;
-    padding: 20px;
+    padding-top: 20px;
+ }
+
+ .itemDetail__copyButton {
+    display:inline-block;
+    padding:0.35em 1.2em;
+    border:0.1em solid #FFFFFF;
+    margin:0 0.3em 0.3em 0;
+    border-radius:0.12em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color:#f8de87;
+    background-color:#afaeae;
+    text-align:center;
+    transition: all 0.2s;
+ }
+
+ .itemDetail__copyButton:hover{
+    color:#f8de87;
+    background-color:#5a5a5a;
  }

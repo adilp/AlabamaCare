@@ -57,6 +57,12 @@ const ItemDetail = (props = null) => {
             />
           </div>
           <SubmittedByComponent commentAuthor={commentAuthor} info={props} />
+          <CopyToClipboard text={path} onCopy={onCopyText}>
+            <div className="copy-area">
+              <button className="itemDetail__copyButton">Copy Link</button>
+              {isCopied ? "Link Copied" : ""}
+            </div>
+          </CopyToClipboard>
           <div className="app__videos">
             <ReactPlayer
               className="video__player"
@@ -68,16 +74,9 @@ const ItemDetail = (props = null) => {
             />
           </div>
           <Votes classStyle="itemDetail__upVote" info={videoData[0]} />
-
-          <CopyToClipboard text={path} onCopy={onCopyText}>
-            <div className="copy-area">
-              <button>Copy Link</button>
-              {isCopied ? "Link Copied" : ""}
-            </div>
-          </CopyToClipboard>
         </div>
         <div className="itemDetail__related">
-          <span>Related: </span>
+          <span>More from this broadcast: </span>
           <Posts videoFeed={video} />
         </div>
       </div>
