@@ -2,15 +2,12 @@ import React, { useState } from "react";
 import env from "react-dotenv";
 import "./css/PostItem.css";
 import { NavLink } from "react-router-dom";
-import utils from "../utils/utils";
 import HashtagComponent from "./common/HashtagComponent";
 import SubmittedByComponent from "./common/SubmittedByComponent";
 import Votes from "./common/Votes";
 
 const PostItem = (props) => {
   const { hashtag, text, image, commentAuthor, _id } = props.comment;
-
-  const { hashTag, title } = utils.cleanText(text);
 
   return (
     <div className="post">
@@ -39,12 +36,12 @@ const PostItem = (props) => {
             info: { props },
           }}
         >
-          <a> {title} </a>
+          <a> {text} </a>
         </NavLink>
         <div className="left__timeHash">
           {/*} <span className="post__timeStamp">{timeStamp}</span> */}
           <HashtagComponent
-            hashTag={hashTag}
+            hashTag={hashtag}
             hashTagURL={hashtag}
             info={props.comment}
           />

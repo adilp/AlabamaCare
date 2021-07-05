@@ -6,7 +6,6 @@ import ReactPlayer from "react-player";
 import Posts from "./Posts";
 import sanityClient from "../utils/client";
 import { useParams, useLocation } from "react-router-dom";
-import utils from "../utils/utils";
 import HashtagComponent from "./common/HashtagComponent";
 import SubmittedByComponent from "./common/SubmittedByComponent";
 import Votes from "./common/Votes";
@@ -42,16 +41,16 @@ const ItemDetail = (props = null) => {
 
   if (videoData) {
     let { text, commentAuthor, url, video, hashtag } = videoData[0];
-    const { hashTag, title } = utils.cleanText(text);
+    console.log(videoData[0]);
 
     data = (
       <div>
         <div className="itemDetail__container">
           <div className="itemDetail__postinfo">
             {/* <span className="postinfo__timestamp">{timeStamp} </span> */}
-            <span className="postinfo__title">{title} </span>
+            <span className="postinfo__title">{text} </span>
             <HashtagComponent
-              hashTag={hashTag}
+              hashTag={hashtag}
               hashTagURL={hashtag}
               info={props}
             />
@@ -76,7 +75,9 @@ const ItemDetail = (props = null) => {
           <Votes classStyle="itemDetail__upVote" info={videoData[0]} />
         </div>
         <div className="itemDetail__related">
-          <span>More from this broadcast: </span>
+          <span className="itemDetail__related-text">
+            More from this broadcast:{" "}
+          </span>
           <Posts videoFeed={video} />
         </div>
       </div>

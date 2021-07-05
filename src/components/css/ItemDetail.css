@@ -42,15 +42,16 @@
 .itemDetail__related {
     position: absolute;
     left: 50%;
-    transform: translate(-50%);
+    transform: translateX(-50%);
 }
 
 .itemDetail__related > span{
     position: relative;
-    left: 50%;
-    padding-bottom: 100px;
     font-weight: bold;
     font-size: large;
+    max-width:500px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
     /* display: flex;
     flex-wrap: wrap;
     align-items: center;
