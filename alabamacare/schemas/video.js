@@ -47,6 +47,7 @@ export default {
       name: "categories",
       title: "Categories",
       type: "array",
+      weak: true,
       of: [{ type: "reference", to: { type: "category" } }],
     },
     {

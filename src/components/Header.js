@@ -28,6 +28,16 @@ export default function Header() {
               <a>Most Liked</a>
             </Link>
           </li>
+          <li>
+            <Link
+              className="header__link"
+              to={{
+                pathname: `/`,
+              }}
+            >
+              <a>Top 10</a>
+            </Link>
+          </li>
         </ul>
       </div>
     </div>

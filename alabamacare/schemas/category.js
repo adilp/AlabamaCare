@@ -1,17 +1,23 @@
+/* eslint-disable import/no-anonymous-default-export */
 export default {
-  name: 'category',
-  title: 'Category',
-  type: 'document',
+  name: "category",
+  title: "Category",
+  type: "document",
   fields: [
     {
-      name: 'title',
-      title: 'Title',
-      type: 'string',
+      name: "hashtag",
+      title: "Hashtag",
+      type: "string",
     },
     {
-      name: 'description',
-      title: 'Description',
-      type: 'text',
+      name: "publishedAt",
+      title: "Published at",
+      type: "datetime",
     },
   ],
-}
+  preview: {
+    select: {
+      title: "hashtag",
+    },
+  },
+};

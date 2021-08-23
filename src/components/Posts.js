@@ -5,9 +5,9 @@ import "./css/Posts.css";
 
 const _filter = (props) => {
   const { videoFeed, filter, type } = props;
+  console.log(videoFeed, filter, type);
   if (videoFeed !== "home") {
     return `[_type == "comment" && video == "${videoFeed}"]`;
-    //console.log(querry);
   }
   if (filter && type === "hashtag") {
     console.log("filter by hashtag");
@@ -21,11 +21,10 @@ const _filter = (props) => {
 
   if (type === "most_liked") {
     console.log("filter by most liked");
-    return `[_type == "comment"] | order(upvote desc)`;
+    return `[_type == "comment"] [0..20]| order(upvote desc)`;
   }
 
-  // return '[ _type == "homePage" ]{commentId-> }';
-  return `[_type == "comment"]`;
+  return '[ _type == "homePage" ] | order (order) {commentId-> }.commentId';
 };
 
 //const _randomOrder = (list) => list.sort(() => Math.random() - 0.5);
@@ -39,18 +38,26 @@ const Posts = (props) => {
     sanityClient
       .fetch(`*${querry}`)
       .then((data) => {
-        console.log(data, querry);
+        let flattened = [];
+        // if (!props.filter && !props.type) {
+        //   data.map((item) => flattened.push(item.commentId));
+        //   setvideo(flattened);
+        // } else {
         setvideo(data);
+        // }
         setIsLoading(false);
       })
       .catch(console.error);
-  }, [querry]);
+  }, [querry, props.filter, props.type]);
 
   return (
     <div className="posts">
       {isLoading
         ? "...loading"
-        : videoData.map((post) => <PostItem key={post._id} comment={post} />)}
+        : videoData.map((post) => {
+            console.log(post);
+            return <PostItem key={post._id} comment={post} />;
+          })}
     </div>
   );
 };

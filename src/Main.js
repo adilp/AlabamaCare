@@ -16,6 +16,8 @@ function Main() {
     <div className="container">
       <Header />
       <div className="filter">
+        {!type && !feed ? "Top 10" : null}
+        {type === "most_liked" ? "Most Liked" : null}
         {type && feed ? `Filter by ${type}: ${feed}` : null}
       </div>
       <Posts className="posts" videoFeed="home" filter={feed} type={type} />

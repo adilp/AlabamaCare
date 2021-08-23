@@ -11,6 +11,11 @@ export default {
       to: { type: "comment" },
     },
     {
+      name: "order",
+      title: "Order",
+      type: "number",
+    },
+    {
       name: "publishedAt",
       title: "Published at",
       type: "datetime",
@@ -19,14 +24,13 @@ export default {
 
   preview: {
     select: {
-      title: "commentId",
-      author: "author.name",
-      media: "mainImage",
+      title: "order",
+      order: "order",
     },
     prepare(selection) {
-      const { author } = selection;
+      const { order } = selection;
       return Object.assign({}, selection, {
-        subtitle: author && `by ${author}`,
+        subtitle: order && `by ${order}`,
       });
     },
   },

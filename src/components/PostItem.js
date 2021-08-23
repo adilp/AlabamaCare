@@ -8,6 +8,7 @@ import Votes from "./common/Votes";
 
 const PostItem = (props) => {
   const { hashtag, text, image, commentAuthor, _id } = props.comment;
+  console.log(_id);
 
   return (
     <div className="post">
