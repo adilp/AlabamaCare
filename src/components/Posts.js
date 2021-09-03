@@ -24,6 +24,11 @@ const _filter = (props) => {
     return `[_type == "comment"] [0..20]| order(upvote desc)`;
   }
 
+  if (filter && type === "category") {
+    console.log("filter by category");
+    return `[_type == "comment" && hashtag == "#${filter}"]`;
+  }
+
   return '[ _type == "homePage" ] | order (order) {commentId-> }.commentId';
 };
 
@@ -33,6 +38,7 @@ const Posts = (props) => {
   const [videoData, setvideo] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   let querry = _filter(props);
+  console.log("this is querry ", querry);
 
   useEffect(() => {
     sanityClient
