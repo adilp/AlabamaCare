@@ -10,6 +10,15 @@ export default function Header() {
   const [videoData, setvideo] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const myFunction = () => {
+    var x = document.getElementById("myHeader");
+    if (x.className === "header__right") {
+      x.className += " responsive";
+    } else {
+      x.className = "header__right";
+    }
+  };
+
   useEffect(() => {
     sanityClient
       .fetch(`*${`[_type == "category"]`}`)
@@ -49,7 +58,7 @@ export default function Header() {
           <h1>Alabama Care</h1>
         </Link>
       </div>
-      <div className="header__right">
+      <div className="header__right" id="myHeader">
         <ul>
           <li>
             <Link
@@ -61,14 +70,6 @@ export default function Header() {
               <a>Most Liked</a>
             </Link>
           </li>
-          <Multiselect
-            options={videoData} // Options to display in the dropdown
-            // selectedValues={this.state.selectedValue} // Preselected value to persist in dropdown
-            onSelect={(e) => handleAddrTypeChange(e)} // Function will trigger on select event
-            // onRemove={this.onRemove} // Function will trigger on remove event
-            displayValue="hashtag" // Property name to display in the dropdown options
-            singleSelect="true"
-          />
 
           <li>
             <Link
@@ -79,6 +80,22 @@ export default function Header() {
             >
               <a>Top 10</a>
             </Link>
+          </li>
+          <li>
+            <Multiselect
+              className="header__right__dropdown"
+              options={videoData} // Options to display in the dropdown
+              // selectedValues={this.state.selectedValue} // Preselected value to persist in dropdown
+              onSelect={(e) => handleAddrTypeChange(e)} // Function will trigger on select event
+              // onRemove={this.onRemove} // Function will trigger on remove event
+              displayValue="hashtag" // Property name to display in the dropdown options
+              singleSelect="true"
+            />
+          </li>
+          <li>
+            <a href="javascript:void(0);" className="icon" onClick={myFunction}>
+              <i className="fa fa-bars"></i>
+            </a>
           </li>
         </ul>
       </div>

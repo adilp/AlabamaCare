@@ -14,7 +14,7 @@
 }
 
 .header__right {
-    padding-right: 10px;
+    /* padding-right: 10px; */
 }
 
 .header__right ul{
@@ -50,3 +50,50 @@
 {
     text-decoration: none;
 }
+
+@media screen and (max-width: 600px) {
+    .container {
+        padding: 0px;
+        max-width: 400px;
+    }
+    .header {
+        height: 200px;
+    }
+    .header__left {
+        float: left;
+        padding-left: 50px;
+        display: block;
+        display: flex;
+        align-items: center;
+        font-size: 8px;
+    }
+
+    .header__right ul.li {
+      display: none;
+    }
+    .header__right ul.li.icon {
+      float: right;
+      display: block;
+    }
+
+    .header__right ul{
+        float: right;
+        display: block;
+      }
+  }
+  
+  @media screen and (max-width: 600px) {
+    .header__right.responsive {
+      position: relative;
+    }
+    .header__right.responsive ul.li.icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .header__right.responsive ul.li.a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+  }
