@@ -86,11 +86,13 @@ export default function Header() {
               className="header__right__dropdown"
               style={{
                 multiselectContainer: {
-                  backgroundolor: "red",
+                  width: "150px",
+                  whiteSpace: "pre-wrap",
+                  overflowWrap: "break-word",
                 },
-                option: {
-                  // To change css for dropdown options
-                  color: "blue",
+                optionContainer: {
+                  // To change css for option container
+                  backgroundolor: "red",
                 },
               }}
               options={videoData} // Options to display in the dropdown
