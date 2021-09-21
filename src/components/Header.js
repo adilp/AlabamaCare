@@ -84,6 +84,15 @@ export default function Header() {
           <li>
             <Multiselect
               className="header__right__dropdown"
+              style={{
+                multiselectContainer: {
+                  backgroundolor: "red",
+                },
+                option: {
+                  // To change css for dropdown options
+                  color: "blue",
+                },
+              }}
               options={videoData} // Options to display in the dropdown
               // selectedValues={this.state.selectedValue} // Preselected value to persist in dropdown
               onSelect={(e) => handleAddrTypeChange(e)} // Function will trigger on select event
